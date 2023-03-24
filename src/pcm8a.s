@@ -1,5 +1,5 @@
 *
-*	X68k polyphonic ADPCM driver PCM8A.X v1.02				*;version
+*	X68k polyphonic ADPCM driver PCM8A.X v1.02.1				*;version
 *		音程変換対応(MPCM.X相当)
 *		Xellent30ｼﾘｰｽﾞ ﾛｰｶﾙSRAM用ﾜｰｸ分離対応
 *		040turbo 対応 , ﾊｲﾒﾓﾘ常駐対応
@@ -63,17 +63,17 @@ FM1BBF	equ	$09DA
 ADIOCS	equ	$0C32
 MPUFLG	equ	$0CBC
 HUTOP	equ	$6800
-TXTPL0	equ	$FFE82200
-DMACH3	equ	$FFE840C0
-MFPIMA	equ	$FFE88013
-MFPIMB	equ	$FFE88015
-MFPTMC	equ	$FFE88023
-FMADR	equ	$FFE90001
-FMDAT	equ	$FFE90003
-PCMCNT	equ	$FFE92001
-PCMDAT	equ	$FFE92003
-PPIPC	equ	$FFE9A005
-PPICTL	equ	$FFE9A007
+TXTPL0	equ	$00E82200
+DMACH3	equ	$00E840C0
+MFPIMA	equ	$00E88013
+MFPIMB	equ	$00E88015
+MFPTMC	equ	$00E88023
+FMADR	equ	$00E90001
+FMDAT	equ	$00E90003
+PCMCNT	equ	$00E92001
+PCMDAT	equ	$00E92003
+PPIPC	equ	$00E9A005
+PPICTL	equ	$00E9A007
 
 *************************************************
 *  ADPCM → DPCM 変換ﾏｸﾛ			*
@@ -12767,7 +12767,7 @@ DECTBL:	.dc.w	1,200
 	.dc.w	-1
 
 TTLME1:	.dc.b	13,10
-TTLMES:	.dc.b	'X68k PCM8A polyphonic ADPCM driver v1.02 '			*;version
+TTLMES:	.dc.b	'X68k PCM8A polyphonic ADPCM driver v1.02.1 '			*;version
 	.dc.b	'(c)1993-97 philly',13,10,0
 USEMES:	.dc.b	'使用法：PCM8A [<ｽｲｯﾁ>]',13,10
 	.dc.b	'<ｽｲｯﾁ>',9,'ON',9,': 多重再生ﾓｰﾄﾞ(通常)',13,10
