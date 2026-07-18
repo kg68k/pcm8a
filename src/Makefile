@@ -8,6 +8,7 @@ AS	= has060
 ASFLAGS	=
 LD	?= hlkx
 LDFLAGS	=
+U8TOSJ	= u8tosj
 
 BINDIR	= /usr/local/bin
 MANDIR	= /usr/local/man/cat1
@@ -15,21 +16,14 @@ MANDIR	= /usr/local/man/cat1
 SRCS	= pcm8a.s
 OBJS	= $(SRCS:.s=.o)
 PCM8A_X	= pcm8a.x
-DOCS	= README.md
+DOCS	= CHANGELOG.txt README.txt
 
-DIST_ZIP = pcm8a.zip
-ARCS	= $(DIST_ZIP)
+ARCHIVE_ZIP = pcm8a.zip
+
+
+.PHONY: all archive clean
 
 all: $(PCM8A_X)
-
-
-$(DIST_ZIP): $(DOCS) $(PCM8A_X)
-	rm -f $@
-	zip -9 $@ $^
-
-$(SRC_ZIP): Makefile $(SRCS)
-	rm -f $@
-	zip -9 $@ $^
 
 
 $(PCM8A_X): $(OBJS)
@@ -39,12 +33,31 @@ $(PCM8A_X): $(OBJS)
 	$(AS) $(ASFLAGS) $<
 
 
+ifdef SRC_DIR
+archive: $(ARCHIVE_ZIP)
+else
+archive: ../srcdir.txt
+	$(if $(SRC_DIR_IS_DEFINED),$(error SRC_DIR is empty.))
+	make $@ SRC_DIR_IS_DEFINED=yes SRC_DIR=$(shell cat ../srcdir.txt)
+../srcdir.txt:
+	$(error file 'srcdir.txt' created by src2build is required.)
+endif
+
+$(ARCHIVE_ZIP): $(DOCS) $(PCM8A_X)
+	rm -f $@
+	zip -9 $@ $^
+
+%.txt: $(SRC_DIR)/../%.md
+	rm -f $@
+	$(U8TOSJ) < $^ > $@
+
+
 install:
 	cp -p $(PCM8A_X) $(BINDIR)
 	cp -p $(DOCS) $(MANDIR)
 
 clean:
-	rm -f $(PCM8A_X) $(OBJS) $(ARCS)
+	rm -f $(PCM8A_X) $(OBJS) $(ARCHIVE_ZIP)
 
 
 # EOF

@@ -6,6 +6,14 @@ PCM8A version 1.02(philly氏作)の改造版です。
 十分なテストを行っていないので、不具合があるかもしれません。
 
 
+## 変更点
+
+* I/Oアドレスを`$FFxxxxxx`から`$00xxxxxx`に変更し、ハイメモリ環境でも動作するようにしました。
+  * `$FFxxxxxx`になっていた理由は下記を参照してください。
+    * https://twitter.com/Hau_oli/status/1639047191246548992
+    * https://twitter.com/Hau_oli/status/1639048580144168961
+
+
 ## Build
 
 PCやネット上での取り扱いを用意にするために、src/内のファイルはUTF-8で記述されています。
@@ -33,3 +41,4 @@ UTF-8のままでは正しくビルドできません。
 原著作者: philly 氏
 
 改造版作者: TcbnErik / https://github.com/kg68k/pcm8a
+
