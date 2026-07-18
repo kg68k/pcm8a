@@ -6,7 +6,7 @@ endif
 
 AS	= has060
 ASFLAGS	=
-LD	= hlk
+LD	?= hlkx
 LDFLAGS	=
 
 BINDIR	= /usr/local/bin
@@ -15,7 +15,7 @@ MANDIR	= /usr/local/man/cat1
 SRCS	= pcm8a.s
 OBJS	= $(SRCS:.s=.o)
 PCM8A_X	= pcm8a.x
-DOCS	= pcm8a.doc pcm8atec.doc pcm8avup.doc README.md
+DOCS	= README.md
 
 DIST_ZIP = pcm8a.zip
 ARCS	= $(DIST_ZIP)
