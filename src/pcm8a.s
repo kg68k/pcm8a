@@ -1,5 +1,5 @@
 *
-*	X68k polyphonic ADPCM driver PCM8A.X v1.02.1				*;version
+*	X68k polyphonic ADPCM driver PCM8A.X v1.02				*;version
 *		音程変換対応(MPCM.X相当)
 *		Xellent30ｼﾘｰｽﾞ ﾛｰｶﾙSRAM用ﾜｰｸ分離対応
 *		040turbo 対応 , ﾊｲﾒﾓﾘ常駐対応
@@ -11,6 +11,8 @@
 
 	.include	doscall.mac
 	.include	iocscall.mac
+
+PATCHLEVEL	equ	'1'
 
 PCMCI1	equ	25			* ﾁｬﾝﾈﾙ数のﾃﾞﾌｫﾙﾄ値
 PCMCI2	equ	32			*   〃   (常駐時の領域確保用)
@@ -12767,7 +12769,8 @@ DECTBL:	.dc.w	1,200
 	.dc.w	-1
 
 TTLME1:	.dc.b	13,10
-TTLMES:	.dc.b	'X68k PCM8A polyphonic ADPCM driver v1.02.1 '			*;version
+TTLMES:	.dc.b	'X68k PCM8A polyphonic ADPCM driver v1.02'			*;version
+	.dc.b	'.',PATCHLEVEL,' '
 	.dc.b	'(c)1993-97 philly',13,10,0
 USEMES:	.dc.b	'使用法：PCM8A [<ｽｲｯﾁ>]',13,10
 	.dc.b	'<ｽｲｯﾁ>',9,'ON',9,': 多重再生ﾓｰﾄﾞ(通常)',13,10
@@ -12877,4 +12880,3 @@ WKBUFE:	.ds.b	10
 LASTAD:
 
 	.end	START
-
