@@ -12,7 +12,7 @@
 	.include	doscall.mac
 	.include	iocscall.mac
 
-PATCHLEVEL	equ	'1'
+PATCHLEVEL	equ	'2'
 
 PCMCI1	equ	25			* ﾁｬﾝﾈﾙ数のﾃﾞﾌｫﾙﾄ値
 PCMCI2	equ	32			*   〃   (常駐時の領域確保用)
@@ -10049,7 +10049,7 @@ P0881C:	subi.l	#$10000,d2
 	jmp	(a5)
 P08821:	sub.w	a2,d2
 	bcs	P08823
-P08822:	move.w	(a0),d0
+P08822:	move.b	(a0),d0
 	adda.w	a2,a0
 	ext.w	d0
 	add.w	d0,(a1)+
@@ -10071,7 +10071,7 @@ P08825:	sub.w	d1,d2
 	movea.l	a3,a4
 	add.w	d3,d3
 	subq.w	#1,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	add.w	d0,(a1)+
@@ -10082,7 +10082,7 @@ P08826:	subi.l	#$10000,d2
 	movea.l	a3,a4
 	add.w	d3,d3
 	subq.w	#1,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	add.w	d0,(a1)+
@@ -10099,7 +10099,7 @@ P08829:	sub.w	d1,d2
 	movea.l	a3,a4
 	subq.l	#2,a1
 	add.w	d3,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	add.w	d0,(a1)+
@@ -10110,7 +10110,7 @@ P0882C:	subi.l	#$10000,d2
 	movea.l	a3,a4
 	subq.l	#2,a1
 	add.w	d3,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	add.w	d0,(a1)+
@@ -10305,7 +10305,7 @@ P088BC:	subi.l	#$10000,d2
 	jmp	(a5)
 P088C1:	sub.w	a2,d2
 	bcs	P088C3
-P088C2:	move.w	(a0),d0
+P088C2:	move.b	(a0),d0
 	adda.w	a2,a0
 	ext.w	d0
 	move.w	d0,d6
@@ -10331,7 +10331,7 @@ P088C5:	sub.w	d1,d2
 	movea.l	a3,a4
 	add.w	d3,d3
 	subq.w	#1,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	move.w	d0,d6
@@ -10346,7 +10346,7 @@ P088C6:	subi.l	#$10000,d2
 	movea.l	a3,a4
 	add.w	d3,d3
 	subq.w	#1,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	move.w	d0,d6
@@ -10367,7 +10367,7 @@ P088C9:	sub.w	d1,d2
 	movea.l	a3,a4
 	subq.l	#2,a1
 	add.w	d3,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	move.w	d0,d6
@@ -10382,7 +10382,7 @@ P088CC:	subi.l	#$10000,d2
 	movea.l	a3,a4
 	subq.l	#2,a1
 	add.w	d3,d3
-	move.w	(a0),d0
+	move.b	(a0),d0
 	adda.w	d1,a0
 	ext.w	d0
 	move.w	d0,d6
@@ -12770,8 +12770,10 @@ DECTBL:	.dc.w	1,200
 
 TTLME1:	.dc.b	13,10
 TTLMES:	.dc.b	'X68k PCM8A polyphonic ADPCM driver v1.02'			*;version
-	.dc.b	'.',PATCHLEVEL,' '
-	.dc.b	'(c)1993-97 philly',13,10,0
+	.dc.b	'.',PATCHLEVEL
+	.dc.b	' (c)1993-97 philly'
+	.dc.b	' (c)2026 TcbnErik'
+	.dc.b	13,10,0
 USEMES:	.dc.b	'使用法：PCM8A [<ｽｲｯﾁ>]',13,10
 	.dc.b	'<ｽｲｯﾁ>',9,'ON',9,': 多重再生ﾓｰﾄﾞ(通常)',13,10
 	.dc.b	9,'OFF',9,': 単音再生ﾓｰﾄﾞ',13,10
