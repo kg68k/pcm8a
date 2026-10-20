@@ -37,6 +37,14 @@ src/内のファイルを適当なツールで適宜Shift_JISに変換して別�
 UTF-8のままでは正しくビルドできません。
 
 
+## License
+
+ライセンスについては[pcm8a.txt](docs/pcm8a.txt)
+(またはPCM8A102.LZH内のPCM8A.DOC)を参照してください。
+
+TcbnErikによる改造版もこれと同じ扱いとします。
+
+
 ## Author
 
 原著作者: philly 氏
